@@ -318,7 +318,26 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          2 · MOAT ACCESSIBLE
+          2 · PROBLEM
+      ══════════════════════════════════════════ */}
+      <section className="slide" id="problem" style={{ background: "#000" }}>
+        <div className="slide-inner">
+          <p className="t-label r d0">The Problem</p>
+          <div className="q-wrap r d1">
+            <span className="q-mark" aria-hidden="true">&ldquo;</span>
+            <p className="q-text">
+              Student recruiting is scattered across{" "}
+              <span className="lo">too many disconnected tools</span> and
+              manual steps, making it hard to find the right opportunities,
+              contact the right people, and stay organized enough to{" "}
+              <span className="lo">consistently turn effort into interviews.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          3 · MOAT ACCESSIBLE
       ══════════════════════════════════════════ */}
       <section className="slide" id="moat-core" style={{ background: "var(--bg2)" }}>
         <div className="slide-inner">
@@ -347,7 +366,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          3 · MOAT COMPOUNDING
+          4 · MOAT COMPOUNDING
       ══════════════════════════════════════════ */}
       <section className="slide" id="moat-compounding" style={{ background: "#000" }}>
         <div className="slide-inner">
@@ -375,7 +394,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          4 · MOAT LONG-TERM
+          5 · MOAT LONG-TERM
       ══════════════════════════════════════════ */}
       <section className="slide" id="moat-future" style={{ background: "var(--bg2)" }}>
         <div className="slide-inner">
@@ -395,25 +414,6 @@ export default function Home() {
                 <p className="moat-copy">{m.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          5 · PROBLEM
-      ══════════════════════════════════════════ */}
-      <section className="slide" id="problem" style={{ background: "#000" }}>
-        <div className="slide-inner">
-          <p className="t-label r d0">The Problem</p>
-          <div className="q-wrap r d1">
-            <span className="q-mark" aria-hidden="true">&ldquo;</span>
-            <p className="q-text">
-              Student recruiting is scattered across{" "}
-              <span className="lo">too many disconnected tools</span> and
-              manual steps, making it hard to find the right opportunities,
-              contact the right people, and stay organized enough to{" "}
-              <span className="lo">consistently turn effort into interviews.</span>
-            </p>
           </div>
         </div>
       </section>

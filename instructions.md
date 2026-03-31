@@ -2,7 +2,10 @@ Slide 1
 Name of the company is “REcruiter”
 Value prop underneath the title
 “REcruiter is an all-in-one recruiting tool that helps students find jobs, reach out to the right people, and track everything in one place.”
-Slide 2: Ideation Process - building a MOAT
+Slide 2: Clear Problem Definition
+The problem is that student recruiting is scattered across too many disconnected tools and manual steps, making it hard to find the right opportunities, contact the right people, and stay organized enough to consistently turn effort into interviews.
+Just one sentence on the screen is enough
+Slide 3: Ideation Process - building a MOAT
 Creating a sustainable business model is very different now compared to a decade ago
 It is not enough to come up with a good solution, you need to build a business off of achievable moats
 These are the 7 moats
@@ -15,15 +18,12 @@ distribution moat
 ecosystem moat 
 Highlight the most accessible ones which are workflow, distribution
 Followed by data and network
-Slide 3: Ideation Process - ideas we are familiar with
+Slide 4: Ideation Process - ideas we are familiar with
 Trouble with finding high quality research
 Difficulties with recruiting
 Social media transparency
 Keeping detailed receipts all on one platform
 We decided that trouble with recruiting will help us build the most sustainable MOAT
-Slide 4: Clear Problem Definition
-The problem is that student recruiting is scattered across too many disconnected tools and manual steps, making it hard to find the right opportunities, contact the right people, and stay organized enough to consistently turn effort into interviews.
-Just one sentence on the screen is enough
 Slide 5 & 6 – Solution Value:
 On this slide im going to list out the functions and how it relates to a certain MOAT:
 Establish a workflow for recruiting
