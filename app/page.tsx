@@ -223,7 +223,7 @@ export default function Home() {
   const advance = useCallback(
     (e: React.MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest("nav") || target.closest(".dots") || target.closest("a")) return;
+      if (target.closest("nav") || target.closest("a")) return;
       if (lockRef.current) return;
       lockRef.current = true;
       setTimeout(() => (lockRef.current = false), 900);
@@ -275,27 +275,8 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKey);
   }, [cur, scrollToSlide]);
 
-  const goTo = (i: number) => {
-    scrollToSlide(i);
-  };
-
   return (
     <main onClick={advance} style={{ background: "#000" }}>
-      {/* DOTS */}
-      <div className="dots">
-        {Array.from({ length: SLIDE_COUNT }).map((_, i) => (
-          <button
-            key={i}
-            className={`dot ${cur === i ? "on" : ""}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              goTo(i);
-            }}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
-
       {/* ══════════════════════════════════════════
           1 · HERO
       ══════════════════════════════════════════ */}
