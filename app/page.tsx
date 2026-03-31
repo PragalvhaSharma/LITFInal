@@ -92,11 +92,63 @@ const MOAT_SYSTEMS = [
   },
 ] as const;
 
-const CONTACTS = [
-  { name: "Sarah Chen", co: "Goldman Sachs", st: "responded", dot: "bl" },
-  { name: "Alex Morgan", co: "McKinsey & Co", st: "pending", dot: "pu" },
-  { name: "Priya Patel", co: "Deloitte", st: "interview", dot: "gr" },
-  { name: "James Liu", co: "JP Morgan", st: "sent", dot: "or" },
+const PHONE_SIGNALS = [
+  { label: "Warm intros", value: "04", tone: "bl" },
+  { label: "AI drafts", value: "03", tone: "pu" },
+  { label: "Reply rate", value: "+18%", tone: "gr" },
+] as const;
+
+const PHONE_PIPELINE = [
+  {
+    role: "Summer Analyst",
+    company: "Goldman Sachs",
+    stage: "Follow-up ready",
+    score: "92%",
+    state: "Hot",
+    tone: "bl",
+    progress: 86,
+  },
+  {
+    role: "Strategy Intern",
+    company: "McKinsey & Co",
+    stage: "Coffee chat booked",
+    score: "81%",
+    state: "Booked",
+    tone: "pu",
+    progress: 68,
+  },
+  {
+    role: "Audit Associate",
+    company: "Deloitte",
+    stage: "Interview prep",
+    score: "73%",
+    state: "Prep",
+    tone: "gr",
+    progress: 54,
+  },
+] as const;
+
+const PHONE_FLYOUTS = [
+  {
+    eyebrow: "Reply window",
+    title: "Tue 9:00 - 11:00",
+    body: "Best historical response block for finance outreach.",
+    pos: "left",
+  },
+  {
+    eyebrow: "AI draft",
+    title: "Follow-up ready",
+    body: "82 words with alumni context already woven in.",
+    pos: "right",
+  },
+] as const;
+
+const MOMENTUM_BARS = [
+  { day: "M", height: 10, tone: "dim" },
+  { day: "T", height: 20, tone: "bl" },
+  { day: "W", height: 14, tone: "pu" },
+  { day: "T", height: 28, tone: "gr" },
+  { day: "F", height: 24, tone: "bl" },
 ] as const;
 
 const SLIDE_COUNT = 8;
@@ -426,54 +478,115 @@ export default function Home() {
 
           {/* phone */}
           <div className="phone-scene rs d4">
+            <div className="phone-grid" aria-hidden="true" />
             <div className="phone-glow" aria-hidden="true" />
+            {PHONE_FLYOUTS.map((flyout) => (
+              <div key={flyout.title} className={`phone-flyout ${flyout.pos}`}>
+                <span className="phone-flyout-eyebrow">{flyout.eyebrow}</span>
+                <strong>{flyout.title}</strong>
+                <span>{flyout.body}</span>
+              </div>
+            ))}
             <div className="phone phone-float">
+              <div className="phone-shine" aria-hidden="true" />
+              <div className="phone-side phone-side-top" aria-hidden="true" />
+              <div className="phone-side phone-side-mid" aria-hidden="true" />
+              <div className="phone-side-right" aria-hidden="true" />
               <div className="phone-di" />
               <div className="phone-scr">
-                {/* header */}
+                <div className="m-status">
+                  <span className="m-time">9:41</span>
+                  <div className="m-status-icons" aria-hidden="true">
+                    <span className="m-sig" />
+                    <span className="m-sig" />
+                    <span className="m-bat" />
+                  </div>
+                </div>
+
                 <div className="m-head">
-                  <div className="m-logo"><span className="x">RE</span>cruiter</div>
-                  <div className="m-ava" />
-                </div>
-
-                {/* tabs */}
-                <div className="m-tabs">
-                  <span className="m-tab on">Pipeline</span>
-                  <span className="m-tab">Contacts</span>
-                  <span className="m-tab">Messages</span>
-                </div>
-
-                {/* stats */}
-                <div className="m-stats">
-                  <div className="m-stat-card">
-                    <div className="m-stat-n">12</div>
-                    <div className="m-stat-l">Applied</div>
+                  <div>
+                    <div className="m-k">Recruiting autopilot</div>
+                    <div className="m-title">Your pipeline is heating up.</div>
                   </div>
-                  <div className="m-stat-card">
-                    <div className="m-stat-n">8</div>
-                    <div className="m-stat-l">Contacted</div>
-                  </div>
-                  <div className="m-stat-card">
-                    <div className="m-stat-n">3</div>
-                    <div className="m-stat-l">Interview</div>
+                  <div className="m-ava">
+                    <span />
                   </div>
                 </div>
 
-                {/* contact list */}
-                <div className="m-list">
-                  {CONTACTS.map((c) => (
-                    <div key={c.name} className="m-card">
-                      <div className={`m-dot ${c.dot}`} />
-                      <div>
-                        <div className="m-name">{c.name}</div>
-                        <div className="m-co">{c.co}</div>
-                      </div>
-                      <div className={`m-st ${c.st}`}>{c.st}</div>
+                <div className="m-hero-card">
+                  <div className="m-hero-row">
+                    <div>
+                      <p className="m-hero-ey">Next move</p>
+                      <h3 className="m-hero-title">Ping Sarah before lunch</h3>
+                    </div>
+                    <span className="m-badge blue">92% match</span>
+                  </div>
+                  <p className="m-hero-copy">
+                    AI tightened the follow-up and anchored it to your alumni overlap.
+                  </p>
+                  <div className="m-hero-meta">
+                    <span>Goldman Sachs</span>
+                    <span>Warm intro live</span>
+                  </div>
+                </div>
+
+                <div className="m-signals">
+                  {PHONE_SIGNALS.map((signal) => (
+                    <div key={signal.label} className={`m-signal-card ${signal.tone}`}>
+                      <span className="m-signal-label">{signal.label}</span>
+                      <span className="m-signal-value">{signal.value}</span>
                     </div>
                   ))}
                 </div>
 
-                {/* bottom nav */}
+                <div className="m-tabs">
+                  <span className="m-tab on">Pipeline</span>
+                  <span className="m-tab">Messages</span>
+                  <span className="m-tab">Intel</span>
+                </div>
+
+                <div className="m-section-head">
+                  <span>Priority pipeline</span>
+                  <span>3 live</span>
+                </div>
+
+                <div className="m-list">
+                  {PHONE_PIPELINE.map((item) => (
+                    <div key={item.role} className={`m-pipe-card ${item.tone}`}>
+                      <div className="m-pipe-top">
+                        <div>
+                          <div className="m-name">{item.role}</div>
+                          <div className="m-co">{item.company}</div>
+                        </div>
+                        <div className={`m-st ${item.tone}`}>{item.state}</div>
+                      </div>
+                      <div className="m-pipe-meta">
+                        <span>{item.stage}</span>
+                        <span>{item.score}</span>
+                      </div>
+                      <div className="m-progress-track">
+                        <span style={{ width: `${item.progress}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="m-intel">
+                  <div className="m-intel-copy">
+                    <span className="m-intel-ey">Momentum</span>
+                    <strong>3 replies projected by Friday</strong>
+                  </div>
+                  <div className="m-intel-bars" aria-hidden="true">
+                    {MOMENTUM_BARS.map((bar) => (
+                      <span
+                        key={`${bar.day}-${bar.height}`}
+                        className={`m-intel-bar ${bar.tone}`}
+                        style={{ height: `${bar.height}px` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
                 <div className="m-bnav">
                   <div className="m-bnav-i">
                     <div className="m-bnav-dot on" />
