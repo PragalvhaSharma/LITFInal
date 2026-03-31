@@ -40,56 +40,11 @@ const INSIGHTS = [
   { ey: "Funnel", stat: "Best path", lab: '"2 chats → office visit" — we surface highest-ROI paths.' },
 ] as const;
 
-const MOAT_SYSTEMS = [
-  {
-    name: "Workflow",
-    badge: "Daily habit",
-    metric: "One workspace, every step.",
-    desc: "Discovery, outreach, follow-up, prep, and notes all live in the same operating layer students return to every day.",
-    variant: "workflow",
-  },
-  {
-    name: "Distribution",
-    badge: "Campus spread",
-    metric: "Students bring students.",
-    desc: "Growth comes through club chats, class groups, and campus word-of-mouth that a generic recruiting tool cannot buy.",
-    variant: "distribution",
-  },
-  {
-    name: "Data",
-    badge: "Signal flywheel",
-    metric: "Response patterns compound.",
-    desc: "Timing, message shape, alumni affinity, and funnel drop-off become proprietary signal with every interaction.",
-    variant: "data",
-  },
-  {
-    name: "Network",
-    badge: "Shared graph",
-    metric: "Each user sharpens the map.",
-    desc: "Warm paths, known contacts, and proven routes improve for every student as more schools and companies appear.",
-    variant: "network",
-  },
-  {
-    name: "Scale",
-    badge: "Software leverage",
-    metric: "More output per student.",
-    desc: "The product turns scattered effort into repeatable motion, so one student can run a far bigger search without extra chaos.",
-    variant: "scale",
-  },
-  {
-    name: "Regulatory",
-    badge: "Trust moat",
-    metric: "Structured beats messy.",
-    desc: "Permissions, organized records, and safer collaboration beat the spreadsheet-and-DM workflow schools worry about.",
-    variant: "regulatory",
-  },
-  {
-    name: "Ecosystem",
-    badge: "Expanding surface",
-    metric: "Clubs, alumni, advisors, employers.",
-    desc: "Once the workflow is trusted, adjacent groups can plug into the same system and make it harder to replace.",
-    variant: "ecosystem",
-  },
+const NET = [
+  { icon: "⚡", title: "Shared Intelligence", desc: "Every student's data improves predictions for every other student." },
+  { icon: "🤝", title: "Warm Intros", desc: '"Your school already reached out to X." Zero cold start.' },
+  { icon: "📊", title: "Your Benchmark", desc: "Compare your rate against similar companies, roles, stages." },
+  { icon: "💬", title: "Community Forum", desc: "Insider knowledge organized by company, role, and stage." },
 ] as const;
 
 const PHONE_SIGNALS = [
@@ -160,76 +115,6 @@ const isEditableTarget = (target: EventTarget | null) => {
     target.closest("input, textarea, select, [contenteditable='true']") !== null
   );
 };
-
-function renderMoatVisual(variant: (typeof MOAT_SYSTEMS)[number]["variant"]) {
-  switch (variant) {
-    case "workflow":
-      return (
-        <div className="mv mv-workflow">
-          <span />
-          <span />
-          <span />
-        </div>
-      );
-    case "distribution":
-      return (
-        <div className="mv mv-distribution">
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-      );
-    case "data":
-      return (
-        <div className="mv mv-data">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-      );
-    case "network":
-      return (
-        <div className="mv mv-network">
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-      );
-    case "scale":
-      return (
-        <div className="mv mv-scale">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-      );
-    case "regulatory":
-      return (
-        <div className="mv mv-regulatory">
-          <span />
-          <span />
-          <span />
-        </div>
-      );
-    case "ecosystem":
-      return (
-        <div className="mv mv-ecosystem">
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-      );
-  }
-}
 
 /* ─── component ─── */
 
@@ -444,10 +329,10 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           5 · APP MOCKUP
       ══════════════════════════════════════════ */}
-      <section className="slide" id="app" style={{ background: "#000" }}>
-        <div className="slide-inner" style={{ flexDirection: "row", justifyContent: "center", gap: 80, flexWrap: "wrap" }}>
+      <section className="slide app-slide" id="app" style={{ background: "#000" }}>
+        <div className="slide-inner app-layout">
           {/* left text */}
-          <div style={{ maxWidth: 340, textAlign: "left", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div className="app-copy">
             <p className="t-label r d0" style={{ marginBottom: 20 }}>The Product</p>
             <h2 className="t-lg r d1" style={{ marginBottom: 16 }}>
               One place for your <span className="grad">entire pipeline.</span>
@@ -623,28 +508,20 @@ export default function Home() {
           7 · NETWORK
       ══════════════════════════════════════════ */}
       <section className="slide" id="network" style={{ background: "#000" }}>
-        <div className="slide-inner moat-inner">
-          <h2 className="t-xl r d0" style={{ maxWidth: 760, marginBottom: 16 }}>
-            Seven moats.
-            <br />
-            <span className="grad">Seven different ways to widen the gap.</span>
+        <div className="slide-inner">
+          <p className="t-label r d0">Network Effect</p>
+          <h2 className="t-xl r d1" style={{ maxWidth: 600, marginBottom: 14 }}>
+            More students = <span className="grad">smarter for everyone.</span>
           </h2>
-          <p className="t-body r d1" style={{ maxWidth: 620, marginBottom: 40 }}>
-            Not one generic network-effect story. A stacked system where workflow, distribution, data,
-            network, scale, regulatory structure, and ecosystem depth all reinforce one another.
+          <p className="t-body r d2" style={{ maxWidth: 440, marginBottom: 44 }}>
+            Each student who joins makes the product more valuable for every student already here.
           </p>
-          <div className="moat-grid">
-            {MOAT_SYSTEMS.map((moat, i) => (
-              <div key={moat.name} className={`moat-card rs d${Math.min(i + 2, 8)} ${moat.variant}`}>
-                <div className="moat-card-top">
-                  <div className="moat-kicker">{moat.name}</div>
-                  <div className="moat-badge">{moat.badge}</div>
-                </div>
-                <div className="moat-visual-shell" aria-hidden="true">
-                  {renderMoatVisual(moat.variant)}
-                </div>
-                <div className="moat-metric">{moat.metric}</div>
-                <div className="moat-desc">{moat.desc}</div>
+          <div className="ng">
+            {NET.map((c, i) => (
+              <div key={c.title} className={`nc rs d${i + 3}`}>
+                <div className="nc-i">{c.icon}</div>
+                <div className="nc-t">{c.title}</div>
+                <div className="nc-d">{c.desc}</div>
               </div>
             ))}
           </div>
