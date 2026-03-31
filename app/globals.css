@@ -451,15 +451,15 @@ body {
 }
 
 .app-slide .slide-inner {
-  max-width: 1120px;
+  max-width: 1280px;
 }
 
 .app-layout {
   display: grid;
-  grid-template-columns: minmax(280px, 360px) minmax(320px, 420px);
+  grid-template-columns: minmax(280px, 420px) minmax(320px, 420px);
   align-items: center;
-  justify-content: center;
-  gap: clamp(40px, 6vw, 84px);
+  justify-content: space-between;
+  gap: clamp(56px, 8vw, 160px);
   width: 100%;
 }
 
@@ -530,13 +530,15 @@ body {
 
 .phone-flyout.left {
   top: 98px;
-  left: -140px;
+  right: calc(50% + 124px);
+  left: auto;
   animation: card-float 6s ease-in-out infinite;
 }
 
 .phone-flyout.right {
-  right: -140px;
   bottom: 102px;
+  left: calc(50% + 124px);
+  right: auto;
   animation: card-float 6s ease-in-out infinite reverse;
 }
 
@@ -1385,12 +1387,14 @@ body {
 
   .phone-flyout.left {
     top: 94px;
-    left: -120px;
+    right: calc(50% + 84px);
+    left: auto;
   }
 
   .phone-flyout.right {
-    right: -120px;
     bottom: 96px;
+    left: calc(50% + 84px);
+    right: auto;
   }
 
   .phone {
