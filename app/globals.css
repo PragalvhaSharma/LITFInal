@@ -499,14 +499,14 @@ body {
 
 .phone-flyout.left {
   top: 98px;
-  right: calc(50% + 80px);
+  right: calc(50% + 52px);
   left: auto;
   animation: card-float 6s ease-in-out infinite;
 }
 
 .phone-flyout.right {
   bottom: 102px;
-  left: calc(50% + 80px);
+  left: calc(50% + 52px);
   right: auto;
   animation: card-float 6s ease-in-out infinite reverse;
 }
@@ -1356,13 +1356,13 @@ body {
 
   .phone-flyout.left {
     top: 94px;
-    right: calc(50% + 84px);
+    right: calc(50% + 56px);
     left: auto;
   }
 
   .phone-flyout.right {
     bottom: 96px;
-    left: calc(50% + 84px);
+    left: calc(50% + 56px);
     right: auto;
   }
 
