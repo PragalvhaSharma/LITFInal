@@ -497,13 +497,6 @@ body {
   z-index: 3;
 }
 
-.phone-flyout.left {
-  top: 98px;
-  right: calc(50% + 52px);
-  left: auto;
-  animation: card-float 6s ease-in-out infinite;
-}
-
 .phone-flyout.right {
   bottom: 102px;
   left: calc(50% + 52px);
@@ -1352,12 +1345,6 @@ body {
   .phone-flyout {
     width: 168px;
     padding: 12px 14px;
-  }
-
-  .phone-flyout.left {
-    top: 94px;
-    right: calc(50% + 56px);
-    left: auto;
   }
 
   .phone-flyout.right {

@@ -154,12 +154,6 @@ const PHONE_PIPELINE = [
 
 const PHONE_FLYOUTS = [
   {
-    eyebrow: "Reply window",
-    title: "Tue 9:00 - 11:00",
-    body: "Best historical response block for finance outreach.",
-    pos: "left",
-  },
-  {
     eyebrow: "AI draft",
     title: "Follow-up ready",
     body: "82 words with alumni context already woven in.",
