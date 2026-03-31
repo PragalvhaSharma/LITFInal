@@ -58,7 +58,7 @@ const MOAT_FUTURE = [
 const FEATS = [
   {
     title: "Recruiting Workflow",
-    desc: "Manage the entire process — discovery to offer — in one place. No more juggling spreadsheets, DMs, and calendar reminders.",
+    desc: "Manage the entire process from discovery to offer in one place. No more juggling spreadsheets, DMs, and calendar reminders.",
   },
   {
     title: "Student Distribution",
@@ -75,10 +75,10 @@ const FEATS = [
 ] as const;
 
 const INSIGHTS = [
-  { ey: "Timing", stat: "+18%", lab: "Tues 9–11 AM cold emails get 18% higher reply rates." },
-  { ey: "Length", stat: "2.4×", lab: "Short personalized emails outperform long generic ones." },
-  { ey: "Alumni", stat: "School match", lab: "Alumni respond more to phrasing that signals shared context." },
-  { ey: "Funnel", stat: "Best path", lab: '"2 chats → office visit" — we surface highest-ROI paths.' },
+  { ey: "Timing", stat: "+18%", lab: "Tues 9-11 AM cold emails get +18% higher reply rates." },
+  { ey: "Length", stat: "2.4×", lab: "Short personalized emails get 2.4x better replies than long generic ones." },
+  { ey: "Alumni", stat: "+22%", lab: "Alumni from matching schools respond 22% more to context-rich phrasing." },
+  { ey: "Funnel", stat: "2 chats", lab: "The highest-ROI path is usually 2 chats before an office visit." },
 ] as const;
 
 const NET = [
@@ -343,9 +343,7 @@ export default function Home() {
         <div className="slide-inner">
           <p className="t-label r d0">Moats</p>
           <h2 className="t-xl r d1" style={{ maxWidth: 640, marginBottom: 18 }}>
-            The most accessible moats first:
-            <br />
-            <span className="grad">workflow + distribution.</span>
+            The most accessible moats first.
           </h2>
           <p className="t-body r d2" style={{ maxWidth: 560, marginBottom: 36 }}>
             We start with the moats students can feel immediately. These are built into the product from day one.
@@ -372,8 +370,7 @@ export default function Home() {
         <div className="slide-inner">
           <p className="t-label r d0">Moats</p>
           <h2 className="t-xl r d1" style={{ maxWidth: 640, marginBottom: 18 }}>
-            The compounding moats:
-            <span className="grad"> data + network.</span>
+            The compounding moats.
           </h2>
           <p className="t-body r d2" style={{ maxWidth: 560, marginBottom: 36 }}>
             These create a virtuous cycle. Better signal means better matching, better matching means better outcomes.
@@ -400,8 +397,7 @@ export default function Home() {
         <div className="slide-inner">
           <p className="t-label r d0">Moats</p>
           <h2 className="t-xl r d1" style={{ maxWidth: 640, marginBottom: 18 }}>
-            The remaining moats:
-            <span className="grad"> scale + regulatory + ecosystem.</span>
+            The remaining moats.
           </h2>
           <p className="t-body r d2" style={{ maxWidth: 560, marginBottom: 36 }}>
             These are the long-range protections we are building as the product and community expand.
@@ -425,8 +421,7 @@ export default function Home() {
         <div className="slide-inner">
           <p className="t-label r d0">The Solution</p>
           <h2 className="t-xl r d1" style={{ maxWidth: 600, marginBottom: 40 }}>
-            We built the <span className="grad">workflow</span> —
-            <br />and the advantage inside it.
+            We built the <span className="grad">workflow</span> and the advantage is inside it.
           </h2>
           <div className="feat">
             {FEATS.map((f, i) => (
@@ -454,7 +449,7 @@ export default function Home() {
               One place for your <span className="grad">entire pipeline.</span>
             </h2>
             <p className="t-body r d2" style={{ marginBottom: 24 }}>
-              Track contacts, manage outreach, and see what&apos;s working — all from your phone.
+              Track contacts, manage outreach, and see what&apos;s working from your phone.
             </p>
             <p className="t-sm r d3">
               Pipeline&ensp;·&ensp;Contacts&ensp;·&ensp;Messages&ensp;·&ensp;Intelligence
