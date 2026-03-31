@@ -325,15 +325,10 @@ export default function Home() {
     scrollToSlide(i);
   };
 
-  const pct = ((cur + 1) / SLIDE_COUNT) * 100;
-
   return (
     <main onClick={advance} style={{ background: "#000" }}>
       {/* NAV */}
       <nav className="nav">
-        <div className="nav-w">
-          <span className="x">RE</span>cruiter
-        </div>
         <ul className="nav-l">
           <li><a href="#moat">Moat</a></li>
           <li><a href="#problem">Problem</a></li>
@@ -342,9 +337,6 @@ export default function Home() {
           <li><a href="#intel">Intelligence</a></li>
         </ul>
       </nav>
-
-      {/* PROGRESS */}
-      <div className="progress" style={{ width: `${pct}%` }} />
 
       {/* DOTS */}
       <div className="dots">
@@ -360,14 +352,6 @@ export default function Home() {
           />
         ))}
       </div>
-
-      {/* COUNTER */}
-      <div className="counter">
-        {String(cur + 1).padStart(2, "0")} / {String(SLIDE_COUNT).padStart(2, "0")}
-      </div>
-
-      {/* CLICK HINT */}
-      <div className="click-hint">Click to advance · Cmd+F fullscreen</div>
 
       {/* ══════════════════════════════════════════
           1 · HERO
