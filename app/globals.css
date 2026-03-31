@@ -525,17 +525,17 @@ body {
     inset 0 1px 0 rgba(255,255,255,.05);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  z-index: 1;
+  z-index: 3;
 }
 
 .phone-flyout.left {
   top: 98px;
-  left: -50px;
+  left: -140px;
   animation: card-float 6s ease-in-out infinite;
 }
 
 .phone-flyout.right {
-  right: -50px;
+  right: -140px;
   bottom: 102px;
   animation: card-float 6s ease-in-out infinite reverse;
 }
@@ -1193,18 +1193,28 @@ body {
   gap: 4px;
 }
 
-.m-bnav-dot {
-  width: 20px;
-  height: 20px;
+.m-bnav-icon {
+  width: 24px;
+  height: 24px;
   border-radius: 7px;
   border: 1px solid rgba(255,255,255,.05);
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(245, 245, 247, 0.4);
 }
 
-.m-bnav-dot.on {
+.m-bnav-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.m-bnav-icon.on {
   border-color: rgba(41,151,255,.24);
   background: linear-gradient(180deg, rgba(41,151,255,.26), rgba(125,122,255,.12));
   box-shadow: 0 0 18px rgba(41,151,255,.16);
+  color: #fff;
 }
 
 .m-bnav-t {
@@ -1375,11 +1385,11 @@ body {
 
   .phone-flyout.left {
     top: 94px;
-    left: -30px;
+    left: -120px;
   }
 
   .phone-flyout.right {
-    right: -30px;
+    right: -120px;
     bottom: 96px;
   }
 
