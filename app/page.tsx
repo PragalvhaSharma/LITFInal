@@ -4,14 +4,55 @@ import { useEffect, useState, useCallback, useRef } from "react";
 
 /* ─── static data ─── */
 
-const MOATS = [
-  { name: "Workflow", t: "p" },
-  { name: "Distribution", t: "p" },
-  { name: "Data", t: "s" },
-  { name: "Network", t: "s" },
-  { name: "Scale", t: "d" },
-  { name: "Regulatory", t: "d" },
-  { name: "Ecosystem", t: "d" },
+const MOAT_ACCESSIBLE = [
+  {
+    title: "Workflow",
+    description:
+      "Own the day-to-day recruiting pipeline with one polished flow. Every outreach, follow-up, and reply lives in one place.",
+    tone: "blue",
+  },
+  {
+    title: "Distribution",
+    description:
+      "Leverage peer-to-peer credibility and university referrals, the distribution channel no enterprise stack can copy fast.",
+    tone: "purple",
+  },
+] as const;
+
+const MOAT_COMPOUNDING = [
+  {
+    title: "Data",
+    description:
+      "Every contact outcome, timeline, and response signal compounds into better targeting, timing, and content suggestions.",
+    tone: "pink",
+  },
+  {
+    title: "Network",
+    description:
+      "Each student adds more shared intelligence to the graph, improving reach and conversion for everyone.",
+    tone: "green",
+  },
+] as const;
+
+const MOAT_FUTURE = [
+  {
+    title: "Scale",
+    description:
+      "Depth with schools and recruiting cycles grows harder to replicate once execution quality and habits become the standard.",
+    tone: "orange",
+  },
+  {
+    title: "Regulatory",
+    description:
+      "Compliance posture, data handling, and trust standards become a competitive advantage as recruiting tech scrutiny rises.",
+    tone: "blue",
+  },
+  {
+    title: "Ecosystem",
+    description:
+      "APIs, integrations, and platform fit create switching-costs as students build their own workflows inside it.",
+    tone: "purple",
+  },
 ] as const;
 
 const FEATS = [
@@ -41,11 +82,39 @@ const INSIGHTS = [
 ] as const;
 
 const NET = [
-  { icon: "⚡", title: "Shared Intelligence", desc: "Every student's data improves predictions for every other student." },
-  { icon: "🤝", title: "Warm Intros", desc: '"Your school already reached out to X." Zero cold start.' },
-  { icon: "📊", title: "Your Benchmark", desc: "Compare your rate against similar companies, roles, stages." },
-  { icon: "💬", title: "Community Forum", desc: "Insider knowledge organized by company, role, and stage." },
-] as const;
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+    ),
+    title: "Shared Intelligence",
+    desc: "Every student's data improves predictions for every other student.",
+    color: "blue"
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    ),
+    title: "Warm Intros",
+    desc: '"Your school already reached out to X." Zero cold start.',
+    color: "purple"
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+    ),
+    title: "Your Benchmark",
+    desc: "Compare your rate against similar companies, roles, stages.",
+    color: "pink"
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+    ),
+    title: "Community Forum",
+    desc: "Insider knowledge organized by company, role, and stage.",
+    color: "green"
+  },
+];
 
 const PHONE_SIGNALS = [
   { label: "Warm intros", value: "04", tone: "bl" },
@@ -106,7 +175,7 @@ const MOMENTUM_BARS = [
   { day: "F", height: 24, tone: "bl" },
 ] as const;
 
-const SLIDE_COUNT = 8;
+const SLIDE_COUNT = 10;
 
 const isEditableTarget = (target: EventTarget | null) => {
   if (!(target instanceof HTMLElement)) return false;
@@ -212,17 +281,6 @@ export default function Home() {
 
   return (
     <main onClick={advance} style={{ background: "#000" }}>
-      {/* NAV */}
-      <nav className="nav">
-        <ul className="nav-l">
-          <li><a href="#moat">Moat</a></li>
-          <li><a href="#problem">Problem</a></li>
-          <li><a href="#solution">Solution</a></li>
-          <li><a href="#app">Product</a></li>
-          <li><a href="#intel">Intelligence</a></li>
-        </ul>
-      </nav>
-
       {/* DOTS */}
       <div className="dots">
         {Array.from({ length: SLIDE_COUNT }).map((_, i) => (
@@ -260,31 +318,89 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          2 · MOAT
+          2 · MOAT ACCESSIBLE
       ══════════════════════════════════════════ */}
-      <section className="slide" id="moat" style={{ background: "var(--bg2)" }}>
+      <section className="slide" id="moat-core" style={{ background: "var(--bg2)" }}>
         <div className="slide-inner">
-          <p className="t-label r d0">Ideation</p>
-          <h2 className="t-xl r d1" style={{ maxWidth: 580, marginBottom: 18 }}>
-            Built on a <span className="grad">moat.</span>
+          <p className="t-label r d0">Moats</p>
+          <h2 className="t-xl r d1" style={{ maxWidth: 640, marginBottom: 18 }}>
+            The most accessible moats first:
+            <br />
+            <span className="grad">workflow + distribution.</span>
           </h2>
-          <p className="t-body r d2" style={{ maxWidth: 460, marginBottom: 44 }}>
-            Seven moats exist. We committed to the ones a student-built product can realistically own.
+          <p className="t-body r d2" style={{ maxWidth: 560, marginBottom: 36 }}>
+            We start with the moats students can feel immediately. These are built into the product from day one.
           </p>
-          <div className="pills r d3">
-            {MOATS.map((m) => (
-              <span key={m.name} className={`pill ${m.t}`}>{m.name}</span>
+          <div className="moat-grid r d3">
+            {MOAT_ACCESSIBLE.map((m, i) => (
+              <div key={m.title} className={`moat-card r d${i + 4} ${m.tone}`}>
+                <p className="moat-badge">{m.title}</p>
+                <h3 className="moat-title">{m.title}</h3>
+                <p className="moat-copy">{m.description}</p>
+              </div>
             ))}
           </div>
-          <hr className="hr r d4" />
-          <p className="t-sm r d5" style={{ maxWidth: 400 }}>
-            Workflow + Distribution — now.&ensp;Data + Network — compounds.
+          <p className="t-sm r d5" style={{ marginTop: 32, maxWidth: 460 }}>
+            Next come the moats that compound over time.
           </p>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════
-          3 · PROBLEM
+          3 · MOAT COMPOUNDING
+      ══════════════════════════════════════════ */}
+      <section className="slide" id="moat-compounding" style={{ background: "#000" }}>
+        <div className="slide-inner">
+          <p className="t-label r d0">Moats</p>
+          <h2 className="t-xl r d1" style={{ maxWidth: 640, marginBottom: 18 }}>
+            The compounding moats:
+            <span className="grad"> data + network.</span>
+          </h2>
+          <p className="t-body r d2" style={{ maxWidth: 560, marginBottom: 36 }}>
+            These create a virtuous cycle. Better signal means better matching, better matching means better outcomes.
+          </p>
+          <div className="moat-grid r d3">
+            {MOAT_COMPOUNDING.map((m, i) => (
+              <div key={m.title} className={`moat-card r d${i + 4} ${m.tone}`}>
+                <p className="moat-badge">{m.title}</p>
+                <h3 className="moat-title">{m.title}</h3>
+                <p className="moat-copy">{m.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="t-sm r d5" style={{ marginTop: 32, maxWidth: 460 }}>
+            We then build the remaining moats after momentum compounds.
+          </p>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          4 · MOAT LONG-TERM
+      ══════════════════════════════════════════ */}
+      <section className="slide" id="moat-future" style={{ background: "var(--bg2)" }}>
+        <div className="slide-inner">
+          <p className="t-label r d0">Moats</p>
+          <h2 className="t-xl r d1" style={{ maxWidth: 640, marginBottom: 18 }}>
+            The remaining moats:
+            <span className="grad"> scale + regulatory + ecosystem.</span>
+          </h2>
+          <p className="t-body r d2" style={{ maxWidth: 560, marginBottom: 36 }}>
+            These are the long-range protections we are building as the product and community expand.
+          </p>
+          <div className="moat-grid r d3">
+            {MOAT_FUTURE.map((m, i) => (
+              <div key={m.title} className={`moat-card r d${i + 4} ${m.tone}`}>
+                <p className="moat-badge">{m.title}</p>
+                <h3 className="moat-title">{m.title}</h3>
+                <p className="moat-copy">{m.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          5 · PROBLEM
       ══════════════════════════════════════════ */}
       <section className="slide" id="problem" style={{ background: "#000" }}>
         <div className="slide-inner">
@@ -303,7 +419,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          4 · SOLUTION
+          6 · SOLUTION
       ══════════════════════════════════════════ */}
       <section className="slide" id="solution" style={{ background: "var(--bg2)" }}>
         <div className="slide-inner">
@@ -327,7 +443,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          5 · APP MOCKUP
+          7 · APP MOCKUP
       ══════════════════════════════════════════ */}
       <section className="slide app-slide" id="app" style={{ background: "#000" }}>
         <div className="slide-inner app-layout">
@@ -481,7 +597,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          6 · INTELLIGENCE
+          8 · INTELLIGENCE
       ══════════════════════════════════════════ */}
       <section className="slide" id="intel" style={{ background: "var(--bg2)" }}>
         <div className="slide-inner">
@@ -505,7 +621,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          7 · NETWORK
+          9 · NETWORK
       ══════════════════════════════════════════ */}
       <section className="slide" id="network" style={{ background: "#000" }}>
         <div className="slide-inner">
@@ -519,7 +635,7 @@ export default function Home() {
           <div className="ng">
             {NET.map((c, i) => (
               <div key={c.title} className={`nc rs d${i + 3}`}>
-                <div className="nc-i">{c.icon}</div>
+                <div className={`nc-i ${c.color}`}>{c.icon}</div>
                 <div className="nc-t">{c.title}</div>
                 <div className="nc-d">{c.desc}</div>
               </div>
@@ -529,7 +645,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          8 · CLOSING
+          10 · CLOSING
       ══════════════════════════════════════════ */}
       <section className="slide" style={{ background: "#000" }}>
         <div className="close-orb" aria-hidden="true" />
